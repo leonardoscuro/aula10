@@ -7,22 +7,11 @@ var cors = require('cors');
 app.use(cors());
 
 // Porta que eu estou ouvindo
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT);
 
-app.get('/', 
-    function (req, res){    
-        res.send("Hello World");
-    }
-);
-
-app.get('/hello',
-function (req, res){    
-    res.send("Hello de Novo");
-    }
-)
-
-const mensagens = [
-    "Elziele da Rocha", "Lucas Canova dos Santos", 0 
+var book = [
+    {title:"Elziele da Rocha", autor:"Lucas Canova dos Santos"}
+    {title:"Rafaela", autor:"Felipe"} 
 ];
 
 app.get('/mensagens',
