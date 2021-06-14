@@ -9,7 +9,7 @@ app.use(cors());
 // Porta que eu estou ouvindo
 app.listen(process.env.PORT);
 
-var book = [
+var mensagens = [
     {title:"Elziele da Rocha", autor:"Lucas Canova dos Santos"}
     {title:"Rafaela", autor:"Felipe"} 
 ];
