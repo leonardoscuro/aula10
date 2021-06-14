@@ -9,8 +9,8 @@ app.use(cors());
 // Porta que eu estou ouvindo
 app.listen(process.env.PORT);
 
-var mensagens = [
-    {title:"Elziele da Rocha", autor:"Lucas Canova dos Santos"}
+const mensagens = [
+    {title:"Elziele da Rocha", autor:"Lucas Canova dos Santos"},
     {title:"Rafaela", autor:"Felipe"} 
 ];
 
