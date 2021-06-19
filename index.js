@@ -17,7 +17,7 @@ app.get('/',
 
 app.get('/hello',
 function (req, res){    
-    res.send("Hello de Novo");
+    res.send("Hello de novo");
     }
 )
 
