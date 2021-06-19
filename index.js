@@ -50,7 +50,7 @@ app.get('/mensagens/:id',
 app.post('/mensagens', 
     (req, res) => {
         console.log(req.body);
-        const mensagem = req.body.mensagem;
+        const mensagem = req.body;
         mensagens.push(mensagem);
         res.send("criar uma mensagem.")
     }
