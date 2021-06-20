@@ -78,7 +78,7 @@ const mongodb = require('mongodb')
 const password = process.env.PASSWORD || "asdf";
 console.log(password);
 
-const connectionString = `mongodb+srv://admin:${password}@cluster0.fhdc2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const connectionString = `mongodb+srv://admin2:${password}@cluster0.j7dky.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 const options = { 
     useNewUrlParser: true, 
@@ -162,7 +162,7 @@ app.delete('/database/:id',
 
 })();
 
-/* jXjuGydX4MKa9BCq
+/* iw1gqSreZ2NZuWVe
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://admin:<password>@cluster0.j7dky.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
