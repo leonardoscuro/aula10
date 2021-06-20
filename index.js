@@ -59,7 +59,7 @@ app.post('/mensagens',
 app.put('/mensagens/:id',
     (req, res) => {
         const id = req.params.id - 1;
-        const mensagem = req.body.mensagem;
+        const mensagem = req.body;
         mensagens[id] = mensagem;        
         res.send("Mensagem atualizada com sucesso.")
     }
