@@ -21,56 +21,56 @@ function (req, res){
     }
 )
 
-const mensagens = [
-{Carro:"Fusca",Placa:"CMG3164",Cor:"Prata"},
-{Carro:"Corsa",Placa:"FRD4486",Cor:"Preto"},
-{Carro:"Vectra",Placa:"BCV3G50",Cor:"Branco"}
+const carros = [
+{Modelo:"Fusca",Placa:"CMG3164",Cor:"Prata"},
+{Modelo:"Corsa",Placa:"FRD4486",Cor:"Preto"},
+{Modelo:"Vectra",Placa:"BCV3G50",Cor:"Branco"}
 ];
 
-app.get('/mensagens',
+app.get('/carros',
     function(req, res){
-        // res.send(mensagens);
-        res.send(mensagens.filter(Boolean));
+        // res.send(carros);
+        res.send(carros.filter(Boolean));
     }
 );
 
-app.get('/mensagens/:id',
+app.get('/carros/:id',
     function(req, res){
         const id = req.params.id - 1;
-        const mensagem = mensagens[id];
+        const mensagem = carros[id];
 
         if (!mensagem){
-            res.send("Mensagem não encontrada");
+            res.send("Informação não encontrada");
         } else {
             res.send(mensagem);
         }
     }
 )
 
-app.post('/mensagens', 
+app.post('/carros', 
     (req, res) => {
         console.log(req.body);
         const mensagem = req.body;
-        mensagens.push(mensagem);
+        carros.push(mensagem);
         res.send("criar uma mensagem.")
     }
 );
 
-app.put('/mensagens/:id',
+app.put('/carros/:id',
     (req, res) => {
         const id = req.params.id - 1;
         const mensagem = req.body;
-        mensagens[id] = mensagem;        
-        res.send("Mensagem atualizada com sucesso.")
+        carros[id] = mensagem;        
+        res.send("Informação atualizada com sucesso.")
     }
 )
 
-app.delete('/mensagens/:id', 
+app.delete('/carros/:id', 
     (req, res) => {
         const id = req.params.id - 1;
-        delete mensagens[id];
+        delete carros[id];
 
-        res.send("Mensagem removida com sucesso");
+        res.send("Informação removida com sucesso");
     }
 );
 
@@ -88,25 +88,25 @@ const options = {
 (async()=>{
     const client = await mongodb.MongoClient.connect(connectionString, options);
     const db = client.db('myFirstDatabase');
-    const mensagens = db.collection('mensagens');
-    console.log(await mensagens.find({}).toArray());
+    const carros = db.collection('carros');
+    console.log(await carros.find({}).toArray());
 
     app.get('/database',
         async function(req, res){
-        // res.send(mensagens);
-        res.send(await mensagens.find({}).toArray());
+        // res.send(carros);
+        res.send(await carros.find({}).toArray());
     }
 );
 
 app.get('/database/:id',
     async function(req, res){
         const id = req.params.id;
-        const mensagem = await mensagens.findOne(
+        const mensagem = await carros.findOne(
             {_id : mongodb.ObjectID(id)}
         );
         console.log(mensagem);
         if (!mensagem){
-            res.send("Mensagem não encontrada");
+            res.send("Informação não encontrada");
         } else {
             res.send(mensagem);
         }
@@ -120,8 +120,8 @@ app.post('/database',
         
         delete mensagem["_id"];
 
-        mensagens.insertOne(mensagem);        
-        res.send("criar uma mensagem.");
+        carros.insertOne(mensagem);        
+        res.send("criar uma informação.");
     }
 );
 
@@ -134,19 +134,19 @@ app.put('/database/:id',
 
         delete mensagem["_id"];
 
-        const num_mensagens = await mensagens.countDocuments({_id : mongodb.ObjectID(id)});
+        const num_carros = await carros.countDocuments({_id : mongodb.ObjectID(id)});
 
-        if (num_mensagens !== 1) {
-            res.send('Ocorreu um erro por conta do número de mensagens');
+        if (num_carros !== 1) {
+            res.send('Ocorreu um erro por conta do número de informações');
             return;
         }
 
-        await mensagens.updateOne(
+        await carros.updateOne(
             {_id : mongodb.ObjectID(id)},
             {$set : mensagem}
         );
         
-        res.send("Mensagem atualizada com sucesso.")
+        res.send("Informação atualizada com sucesso.")
     }
 )
 
@@ -154,9 +154,9 @@ app.delete('/database/:id',
     async (req, res) => {
         const id = req.params.id;
         
-        await mensagens.deleteOne({_id : mongodb.ObjectID(id)});
+        await carros.deleteOne({_id : mongodb.ObjectID(id)});
 
-        res.send("Mensagem removida com sucesso");
+        res.send("Informação removida com sucesso");
     }
 );
 
