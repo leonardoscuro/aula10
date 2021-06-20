@@ -74,8 +74,10 @@ app.delete('/carros/:id',
     }
 );
 
+//
+
 const mongodb = require('mongodb')
-const password = process.env.PASSWORD || "asdf";
+const password = process.env['PASSWORD']='iw1gqSreZ2NZuWVe';
 console.log(password);
 
 const connectionString = `mongodb+srv://admin2:${password}@cluster0.j7dky.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
